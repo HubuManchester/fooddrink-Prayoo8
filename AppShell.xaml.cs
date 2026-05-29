@@ -1,4 +1,4 @@
-﻿namespace maui_git
+﻿namespace maui
 {
     public partial class AppShell : Shell
     {
