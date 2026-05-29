@@ -11,7 +11,7 @@ public class FoodItem
     public double Fat { get; set; }
     public string AllergyNote { get; set; } = string.Empty;
     public string Tags { get; set; } = string.Empty;
-    public string CaloriesLabel => $"{Calories} 千卡";
-    public string MacroSummary => $"蛋白质 {Protein}克，碳水 {Carbs}克，脂肪 {Fat}克";
-    public string AccessibleSummary => $"{Name}。{Category}。{Calories} 千卡。{MacroSummary}。{AllergyNote}";
+    public string CaloriesLabel => $"{Calories} kcal";
+    public string MacroSummary => $"P {Protein}g, C {Carbs}g, F {Fat}g";
+    public string AccessibleSummary => $"{Name}. {Category}. {Calories} kcal. {MacroSummary}. {AllergyNote}";
 }
