@@ -3,6 +3,10 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#FFF8F0, Dark=#1A1A1A}" />
+    </Style>
+
     <Style TargetType="Shell" ApplyToDerivedTypes="True">
         <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light=#FFF5E8, Dark=#2E251D}" />
         <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light=#D4573A, Dark=#FF8A65}" />
