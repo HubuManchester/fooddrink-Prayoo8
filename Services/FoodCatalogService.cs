@@ -30,8 +30,11 @@ public static class FoodCatalogService
         ).ToList();
     }
 
+    public static event Action? FoodAdded;
+
     public static void Add(FoodItem item)
     {
         _items.Add(item);
+        FoodAdded?.Invoke();
     }
 }

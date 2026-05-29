@@ -9,24 +9,20 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         LoadFoods();
+        FoodCatalogService.FoodAdded += () => LoadFoods();
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        Services.AccessibilityService.ApplyFontScale(this);
-        LoadFoods();
-    }
-
-    protected override void OnNavigatedTo(NavigatedToEventArgs args)
-    {
-        base.OnNavigatedTo(args);
+        AccessibilityService.ApplyFontScale(this);
         LoadFoods();
     }
 
     private void LoadFoods()
     {
         var foods = FoodCatalogService.GetAll();
+        FoodCollectionView.ItemsSource = null;
         FoodCollectionView.ItemsSource = foods;
     }
 
