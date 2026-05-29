@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui.DeviceToolsPage"
+             Title="Device Tools">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+            <Label Text="Hardware Tools"
+                   FontSize="{DynamicResource SubTitleFontSize}"
+                   FontAttributes="Bold"
+                   SemanticProperties.HeadingLevel="Level1" />
+
+            <Label Text="Use built-in device sensors for food journaling and meal decisions."
+                   FontSize="{DynamicResource BodyFontSize}" />
+
+            <Button Text="Take Food Photo"
+                    Clicked="OnTakePhotoClicked"
+                    SemanticProperties.Hint="Open camera and capture food photo" />
+
+            <Label x:Name="PhotoStatusLabel"
+                   Text="Photo: not captured"
+                   FontSize="{DynamicResource BodyFontSize}" />
+
+            <Button Text="Get Current Location"
+                    Clicked="OnGetLocationClicked"
+                    SemanticProperties.Hint="Get current GPS position for restaurant logging" />
+
+            <Label x:Name="LocationStatusLabel"
+                   Text="Location: unavailable"
+                   FontSize="{DynamicResource BodyFontSize}" />
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Button Text="Start Accelerometer" Clicked="OnStartAccelerometerClicked" />
+                <Button Grid.Column="1" Text="Stop Accelerometer" Clicked="OnStopAccelerometerClicked" />
+            </Grid>
+
+            <Label x:Name="AccelerometerStatusLabel"
+                   Text="Accelerometer: stopped"
+                   FontSize="{DynamicResource BodyFontSize}" />
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Button Text="Start Compass" Clicked="OnStartCompassClicked" />
+                <Button Grid.Column="1" Text="Stop Compass" Clicked="OnStopCompassClicked" />
+            </Grid>
+
+            <Label x:Name="CompassStatusLabel"
+                   Text="Compass: stopped"
+                   FontSize="{DynamicResource BodyFontSize}" />
+
+            <Button Text="Read Nearby Dining Tip"
+                    Clicked="OnReadDiningTipClicked"
+                    SemanticProperties.Hint="Read a spoken tip with text to speech" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
