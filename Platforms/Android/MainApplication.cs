@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace maui_git
+namespace maui
 {
     [Application]
     public class MainApplication : MauiApplication

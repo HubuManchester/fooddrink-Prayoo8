@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace maui_git
+namespace maui
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate
