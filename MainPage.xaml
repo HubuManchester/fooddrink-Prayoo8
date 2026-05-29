@@ -1,76 +1,60 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="maui.MainPage"
-             Title="Discover Food">
-    <ScrollView>
-        <VerticalStackLayout Padding="18,16" Spacing="14">
-            <Border Padding="16" BackgroundColor="{AppThemeBinding Light=#FFF5E8, Dark=#2E251D}" StrokeThickness="0">
-                <VerticalStackLayout Spacing="10">
-                    <Label Text="Food and Drink Explorer"
-                           FontSize="{DynamicResource TitleFontSize}"
-                           FontAttributes="Bold"
-                           SemanticProperties.HeadingLevel="Level1" />
-                    <Label Text="Discover cuisines, plan meals, and use device tools to build healthier habits."
+             Title="食品列表">
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16">
+        <SearchBar x:Name="FoodSearchBar"
+                   Placeholder="搜索食品、分类或标签..."
+                   SearchButtonPressed="OnSearchButtonPressed"
+                   TextChanged="OnSearchTextChanged"
+                   SemanticProperties.Hint="输入关键词搜索食品" />
+
+        <RefreshView Grid.Row="1" x:Name="RefreshView"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     RefreshCommand="{Binding RefreshCommand}"
+                     Refreshing="OnRefreshing">
+            <CollectionView x:Name="FoodCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="OnFoodSelected"
+                            Margin="0,8,0,0">
+                <CollectionView.EmptyView>
+                    <Label Text="没有找到匹配的食品。"
+                           HorizontalTextAlignment="Center"
                            FontSize="{DynamicResource BodyFontSize}" />
-                </VerticalStackLayout>
-            </Border>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="14" Margin="0,0,0,10"
+                                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#252525}"
+                                StrokeShape="RoundRectangle 8">
+                            <VerticalStackLayout Spacing="6">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label Text="{Binding Name}" FontAttributes="Bold"
+                                           FontSize="{DynamicResource SubTitleFontSize}" />
+                                    <Label Grid.Column="1" Text="{Binding Category}"
+                                           FontSize="Small" TextColor="Gray" VerticalOptions="Center" />
+                                </Grid>
+                                <Label Text="{Binding Description}"
+                                       FontSize="{DynamicResource BodyFontSize}"
+                                       MaxLines="2" LineBreakMode="TailTruncation" />
+                                <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                                    <Label Text="{Binding CaloriesLabel}"
+                                           FontSize="Small" TextColor="OrangeRed" />
+                                    <Label Grid.Column="1" Text="{Binding MacroSummary}"
+                                           FontSize="Small" TextColor="Gray" />
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
 
-            <Label Text="Popular Cuisines"
-                   FontSize="{DynamicResource SubTitleFontSize}"
-                   FontAttributes="Bold"
-                   SemanticProperties.HeadingLevel="Level2" />
-
-            <Border Padding="12" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#252525}">
-                <VerticalStackLayout Spacing="4">
-                    <Label Text="🇮🇹 Italian"
-                           FontSize="{DynamicResource BodyFontSize}"
-                           FontAttributes="Bold" />
-                    <Label Text="Fresh tomato, olive oil, basil, and handmade pasta."
-                           FontSize="{DynamicResource BodyFontSize}" />
-                </VerticalStackLayout>
-            </Border>
-
-            <Border Padding="12" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#252525}">
-                <VerticalStackLayout Spacing="4">
-                    <Label Text="🇯🇵 Japanese"
-                           FontSize="{DynamicResource BodyFontSize}"
-                           FontAttributes="Bold" />
-                    <Label Text="Balanced meals with fish, rice, vegetables, and tea."
-                           FontSize="{DynamicResource BodyFontSize}" />
-                </VerticalStackLayout>
-            </Border>
-
-            <Border Padding="12" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#252525}">
-                <VerticalStackLayout Spacing="4">
-                    <Label Text="🇲🇽 Mexican"
-                           FontSize="{DynamicResource BodyFontSize}"
-                           FontAttributes="Bold" />
-                    <Label Text="Bold flavors with beans, corn, chili, and citrus."
-                           FontSize="{DynamicResource BodyFontSize}" />
-                </VerticalStackLayout>
-            </Border>
-
-            <Button Text="Read Today's Nutrition Tip"
-                    Clicked="OnReadTipClicked"
-                    SemanticProperties.Hint="Reads a health tip aloud using text to speech" />
-
-            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
-                <Label Text="Text Size"
-                       FontSize="{DynamicResource BodyFontSize}"
-                       VerticalOptions="Center" />
-                <Label Grid.Column="1"
-                       x:Name="TextSizeValueLabel"
-                       Text="15"
-                       FontSize="{DynamicResource BodyFontSize}" />
-            </Grid>
-
-            <Slider x:Name="TextSizeSlider"
-                    Minimum="13"
-                    Maximum="24"
-                    Value="15"
-                    ValueChanged="OnTextSizeChanged"
-                    SemanticProperties.Description="Adjust app text size for readability" />
-        </VerticalStackLayout>
-    </ScrollView>
+        <Button Grid.Row="2" Text="添加食品"
+                Clicked="OnAddFoodClicked"
+                VerticalOptions="End"
+                Margin="0,8,0,0"
+                SemanticProperties.Hint="跳转到添加食品页面" />
+    </Grid>
 </ContentPage>
