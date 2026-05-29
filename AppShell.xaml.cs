@@ -1,10 +1,11 @@
-﻿namespace maui
+namespace maui;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        Routing.RegisterRoute(nameof(FoodDetailPage), typeof(FoodDetailPage));
+        Routing.RegisterRoute(nameof(AddItemPage), typeof(AddItemPage));
     }
 }
