@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui.SettingsPage"
+             Title="设置">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label Text="主题设置" FontSize="{DynamicResource SubTitleFontSize}" FontAttributes="Bold" />
+
+            <Label Text="选择应用主题：" FontSize="{DynamicResource BodyFontSize}" />
+            <Picker x:Name="ThemePicker" Title="选择主题"
+                    SelectedIndexChanged="OnThemeChanged"
+                    SemanticDescription="选择应用主题模式" />
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,8" />
+
+            <Label Text="无障碍设置" FontSize="{DynamicResource SubTitleFontSize}" FontAttributes="Bold" />
+
+            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                <Label Text="大字体模式" FontSize="{DynamicResource BodyFontSize}" VerticalOptions="Center" />
+                <Switch Grid.Column="1" x:Name="LargeFontSwitch"
+                        Toggled="OnLargeFontToggled"
+                        SemanticProperties.Hint="开启或关闭大字体模式" />
+            </Grid>
+
+            <Label x:Name="FontPreviewLabel" Text="当前字体预览大小"
+                   FontSize="{DynamicResource BodyFontSize}" />
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,8" />
+
+            <Label Text="关于" FontSize="{DynamicResource SubTitleFontSize}" FontAttributes="Bold" />
+            <Label Text="食光营养助手 v1.0" FontSize="{DynamicResource BodyFontSize}" />
+            <Label Text="帮助您记录食品营养信息，养成健康饮食习惯。" FontSize="{DynamicResource BodyFontSize}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
