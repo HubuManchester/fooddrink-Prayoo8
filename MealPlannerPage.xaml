@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui.MealPlannerPage"
+             Title="Meal Planner">
+    <Grid RowDefinitions="Auto,*" Padding="16">
+        <VerticalStackLayout Spacing="10">
+            <Label Text="Plan Your Meals"
+                   FontSize="{DynamicResource SubTitleFontSize}"
+                   FontAttributes="Bold"
+                   SemanticProperties.HeadingLevel="Level1" />
+            <Label Text="Track calories and organize breakfast, lunch, dinner, and snacks."
+                   FontSize="{DynamicResource BodyFontSize}" />
+
+            <Picker x:Name="MealTypePicker"
+                    Title="Select meal type"
+                    SemanticProperties.Description="Choose breakfast, lunch, dinner, or snack" />
+
+            <Entry x:Name="MealNameEntry"
+                   Placeholder="Meal name (e.g., Grilled Salmon Bowl)"
+                   FontSize="{DynamicResource BodyFontSize}"
+                   ClearButtonVisibility="WhileEditing"
+                   SemanticProperties.Hint="Enter the meal name" />
+
+            <Entry x:Name="CaloriesEntry"
+                   Placeholder="Calories"
+                   Keyboard="Numeric"
+                   FontSize="{DynamicResource BodyFontSize}"
+                   SemanticProperties.Hint="Enter calories as a number" />
+
+            <DatePicker x:Name="MealDatePicker"
+                        FontSize="{DynamicResource BodyFontSize}"
+                        SemanticProperties.Description="Select planned meal date" />
+
+            <Editor x:Name="NotesEditor"
+                    AutoSize="TextChanges"
+                    Placeholder="Notes (optional)"
+                    FontSize="{DynamicResource BodyFontSize}"
+                    MaxLength="160"
+                    SemanticProperties.Hint="Enter optional meal notes" />
+
+            <Button Text="Add Meal Plan"
+                    Clicked="OnAddMealClicked"
+                    SemanticProperties.Hint="Add meal to your planner list" />
+
+            <Label x:Name="ValidationLabel"
+                   TextColor="OrangeRed"
+                   IsVisible="False"
+                   FontSize="{DynamicResource BodyFontSize}" />
+
+            <Label x:Name="CaloriesSummaryLabel"
+                   Text="Total planned calories: 0"
+                   FontAttributes="Bold"
+                   FontSize="{DynamicResource BodyFontSize}" />
+        </VerticalStackLayout>
+
+        <CollectionView Grid.Row="1"
+                        Margin="0,12,0,0"
+                        x:Name="MealCollectionView"
+                        SelectionMode="None">
+            <CollectionView.EmptyView>
+                <Label Text="No meals planned yet. Add your first meal above."
+                       HorizontalTextAlignment="Center"
+                       FontSize="{DynamicResource BodyFontSize}" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" Margin="0,0,0,10" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#252525}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="{Binding MealType}" FontAttributes="Bold" />
+                            <Label Text="{Binding MealName}" />
+                            <Label Text="{Binding Calories, StringFormat='Calories: {0}'}" />
+                            <Label Text="{Binding PlannedDate, StringFormat='Date: {0:yyyy-MM-dd}'}" />
+                            <Label Text="{Binding Notes, StringFormat='Notes: {0}'}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
