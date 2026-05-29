@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui.FoodDetailPage"
+             Title="食品详情">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label x:Name="NameLabel" FontSize="{DynamicResource TitleFontSize}" FontAttributes="Bold" />
+            <Label x:Name="CategoryLabel" FontSize="{DynamicResource BodyFontSize}" TextColor="Gray" />
+
+            <Border Padding="16" BackgroundColor="{AppThemeBinding Light=#FFF5E8, Dark=#2E251D}" StrokeThickness="0">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="营养信息" FontSize="{DynamicResource SubTitleFontSize}" FontAttributes="Bold" />
+                    <Label x:Name="CaloriesLabel" FontSize="{DynamicResource BodyFontSize}" />
+                    <Label x:Name="ProteinLabel" FontSize="{DynamicResource BodyFontSize}" />
+                    <Label x:Name="CarbsLabel" FontSize="{DynamicResource BodyFontSize}" />
+                    <Label x:Name="FatLabel" FontSize="{DynamicResource BodyFontSize}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label x:Name="DescriptionLabel" FontSize="{DynamicResource BodyFontSize}" />
+
+            <Border Padding="12" BackgroundColor="{AppThemeBinding Light=#FFE8E8, Dark=#2E1D1D}" StrokeThickness="0">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="过敏提示" FontAttributes="Bold" FontSize="{DynamicResource BodyFontSize}" />
+                    <Label x:Name="AllergyLabel" FontSize="{DynamicResource BodyFontSize}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="朗读营养摘要" Clicked="OnSpeakClicked"
+                    SemanticProperties.Hint="使用语音朗读食品营养信息" />
+            <Button Text="停止朗读" Clicked="OnStopClicked"
+                    SemanticProperties.Hint="停止当前语音播放" />
+            <Button Text="震动提醒" Clicked="OnVibrateClicked"
+                    SemanticProperties.Hint="触发设备震动反馈" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
