@@ -1,24 +1,32 @@
-﻿namespace maui_git
+﻿namespace maui
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        private async void OnReadTipClicked(object? sender, EventArgs e)
         {
-            count++;
+            const string tip = "Try to build your plate with half vegetables, a quarter protein, and a quarter whole grains.";
+            await TextToSpeech.SpeakAsync(tip);
+            await DisplayAlertAsync("Nutrition Tip", tip, "OK");
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        private void OnTextSizeChanged(object? sender, ValueChangedEventArgs e)
+        {
+            var roundedSize = Math.Round(e.NewValue);
+            TextSizeValueLabel.Text = roundedSize.ToString("F0");
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            if (Application.Current?.Resources is null)
+            {
+                return;
+            }
+
+            Application.Current.Resources["BodyFontSize"] = roundedSize;
+            Application.Current.Resources["TitleFontSize"] = roundedSize + 13;
+            Application.Current.Resources["SubTitleFontSize"] = roundedSize + 5;
         }
     }
 }
