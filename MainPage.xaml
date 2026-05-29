@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="maui.MainPage"
              Title="Food List">
-    <Grid RowDefinitions="Auto,Auto,*" Padding="16">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16">
         <SearchBar x:Name="FoodSearchBar"
                    Placeholder="Search foods, categories, or tags..."
                    SearchButtonPressed="OnSearchButtonPressed"

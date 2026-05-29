@@ -22,6 +22,7 @@ public partial class MainPage : ContentPage
     private void LoadFoods()
     {
         var foods = FoodCatalogService.GetAll();
+        System.Diagnostics.Debug.WriteLine($"[MainPage] LoadFoods called, count={foods.Count}");
         FoodCollectionView.ItemsSource = null;
         FoodCollectionView.ItemsSource = foods;
     }
