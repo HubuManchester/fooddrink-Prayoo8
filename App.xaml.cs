@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace maui_git
+namespace maui
 {
     public partial class App : Application
     {
