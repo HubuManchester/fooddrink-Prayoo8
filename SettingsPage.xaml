@@ -10,7 +10,7 @@
             <Label Text="选择应用主题：" FontSize="{DynamicResource BodyFontSize}" />
             <Picker x:Name="ThemePicker" Title="选择主题"
                     SelectedIndexChanged="OnThemeChanged"
-                    SemanticDescription="选择应用主题模式" />
+                    SemanticProperties.Description="选择应用主题模式" />
 
             <BoxView HeightRequest="1" Color="LightGray" Margin="0,8" />
 

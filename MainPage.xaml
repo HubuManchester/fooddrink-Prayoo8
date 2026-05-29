@@ -11,8 +11,6 @@
                    SemanticProperties.Hint="输入关键词搜索食品" />
 
         <RefreshView Grid.Row="1" x:Name="RefreshView"
-                     IsRefreshing="{Binding IsRefreshing}"
-                     RefreshCommand="{Binding RefreshCommand}"
                      Refreshing="OnRefreshing">
             <CollectionView x:Name="FoodCollectionView"
                             SelectionMode="Single"
