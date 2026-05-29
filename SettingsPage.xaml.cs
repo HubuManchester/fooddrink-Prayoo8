@@ -7,7 +7,7 @@ public partial class SettingsPage : ContentPage
     public SettingsPage()
     {
         InitializeComponent();
-        ThemePicker.ItemsSource = new List<string> { "跟随系统", "浅色主题", "深色主题" };
+        ThemePicker.ItemsSource = new List<string> { "Follow System", "Light Theme", "Dark Theme" };
         ThemePicker.SelectedIndex = 0;
         LargeFontSwitch.IsToggled = AccessibilityService.LargeTextEnabled;
     }

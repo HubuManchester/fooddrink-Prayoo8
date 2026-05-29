@@ -2,36 +2,36 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="maui.AddItemPage"
-             Title="添加食品">
+             Title="Add Food">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="12">
-            <Label Text="新增食品记录" FontSize="{DynamicResource SubTitleFontSize}" FontAttributes="Bold" />
+            <Label Text="New Food Entry" FontSize="{DynamicResource SubTitleFontSize}" FontAttributes="Bold" />
 
-            <Entry x:Name="NameEntry" Placeholder="名称（必填）" ClearButtonVisibility="WhileEditing"
-                   FontSize="{DynamicResource BodyFontSize}" SemanticProperties.Hint="输入食品名称" />
-            <Picker x:Name="CategoryPicker" Title="选择分类（必填）"
-                    SemanticProperties.Description="选择食品分类" />
-            <Editor x:Name="DescriptionEditor" Placeholder="描述（必填）" AutoSize="TextChanges"
+            <Entry x:Name="NameEntry" Placeholder="Name (required)" ClearButtonVisibility="WhileEditing"
+                   FontSize="{DynamicResource BodyFontSize}" SemanticProperties.Hint="Enter food name" />
+            <Picker x:Name="CategoryPicker" Title="Select Category (required)"
+                    SemanticProperties.Description="Select food category" />
+            <Editor x:Name="DescriptionEditor" Placeholder="Description (required)" AutoSize="TextChanges"
                     MaxLength="200" FontSize="{DynamicResource BodyFontSize}" />
-            <Entry x:Name="CaloriesEntry" Placeholder="热量（千卡，必填）" Keyboard="Numeric"
+            <Entry x:Name="CaloriesEntry" Placeholder="Calories (kcal, required)" Keyboard="Numeric"
                    FontSize="{DynamicResource BodyFontSize}" />
-            <Entry x:Name="ProteinEntry" Placeholder="蛋白质（克）" Keyboard="Numeric"
+            <Entry x:Name="ProteinEntry" Placeholder="Protein (g)" Keyboard="Numeric"
                    FontSize="{DynamicResource BodyFontSize}" />
-            <Entry x:Name="CarbsEntry" Placeholder="碳水化合物（克）" Keyboard="Numeric"
+            <Entry x:Name="CarbsEntry" Placeholder="Carbs (g)" Keyboard="Numeric"
                    FontSize="{DynamicResource BodyFontSize}" />
-            <Entry x:Name="FatEntry" Placeholder="脂肪（克）" Keyboard="Numeric"
+            <Entry x:Name="FatEntry" Placeholder="Fat (g)" Keyboard="Numeric"
                    FontSize="{DynamicResource BodyFontSize}" />
-            <Entry x:Name="AllergyEntry" Placeholder="过敏提示（可选）" ClearButtonVisibility="WhileEditing"
+            <Entry x:Name="AllergyEntry" Placeholder="Allergy note (optional)" ClearButtonVisibility="WhileEditing"
                    FontSize="{DynamicResource BodyFontSize}" />
-            <Entry x:Name="TagsEntry" Placeholder="标签，用逗号分隔（可选）" ClearButtonVisibility="WhileEditing"
+            <Entry x:Name="TagsEntry" Placeholder="Tags, comma separated (optional)" ClearButtonVisibility="WhileEditing"
                    FontSize="{DynamicResource BodyFontSize}" />
 
             <Label x:Name="ValidationLabel" TextColor="OrangeRed" IsVisible="False"
                    FontSize="{DynamicResource BodyFontSize}" />
 
-            <Button Text="保存" Clicked="OnSaveClicked"
-                    SemanticProperties.Hint="保存新食品记录" />
-            <Button Text="返回" Clicked="OnBackClicked" BackgroundColor="Gray" />
+            <Button Text="Save" Clicked="OnSaveClicked"
+                    SemanticProperties.Hint="Save new food entry" />
+            <Button Text="Back" Clicked="OnBackClicked" BackgroundColor="Gray" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

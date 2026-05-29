@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="maui.MainPage"
-             Title="食品列表">
+             Title="Food List">
     <Grid RowDefinitions="Auto,Auto,*" Padding="16">
         <SearchBar x:Name="FoodSearchBar"
-                   Placeholder="搜索食品、分类或标签..."
+                   Placeholder="Search foods, categories, or tags..."
                    SearchButtonPressed="OnSearchButtonPressed"
                    TextChanged="OnSearchTextChanged"
-                   SemanticProperties.Hint="输入关键词搜索食品" />
+                   SemanticProperties.Hint="Enter keywords to search foods" />
 
         <RefreshView Grid.Row="1" x:Name="RefreshView"
                      Refreshing="OnRefreshing">
@@ -17,7 +17,7 @@
                             SelectionChanged="OnFoodSelected"
                             Margin="0,8,0,0">
                 <CollectionView.EmptyView>
-                    <Label Text="没有找到匹配的食品。"
+                    <Label Text="No matching foods found."
                            HorizontalTextAlignment="Center"
                            FontSize="{DynamicResource BodyFontSize}" />
                 </CollectionView.EmptyView>
@@ -49,10 +49,10 @@
             </CollectionView>
         </RefreshView>
 
-        <Button Grid.Row="2" Text="添加食品"
+        <Button Grid.Row="2" Text="Add Food"
                 Clicked="OnAddFoodClicked"
                 VerticalOptions="End"
                 Margin="0,8,0,0"
-                SemanticProperties.Hint="跳转到添加食品页面" />
+                SemanticProperties.Hint="Navigate to add food page" />
     </Grid>
 </ContentPage>

@@ -4,26 +4,26 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:maui"
-    Title="食光营养助手">
+    Title="Food & Drink Explorer">
 
     <TabBar>
         <ShellContent
-            Title="食品"
+            Title="Foods"
             ContentTemplate="{DataTemplate local:MainPage}"
             Icon="dotnet_bot.png"
             Route="MainPage" />
         <ShellContent
-            Title="膳食计划"
+            Title="Meal Planner"
             ContentTemplate="{DataTemplate local:MealPlannerPage}"
             Icon="dotnet_bot.png"
             Route="MealPlannerPage" />
         <ShellContent
-            Title="设备工具"
+            Title="Device Tools"
             ContentTemplate="{DataTemplate local:DeviceToolsPage}"
             Icon="dotnet_bot.png"
             Route="DeviceToolsPage" />
         <ShellContent
-            Title="设置"
+            Title="Settings"
             ContentTemplate="{DataTemplate local:SettingsPage}"
             Icon="dotnet_bot.png"
             Route="SettingsPage" />

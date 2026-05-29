@@ -18,6 +18,12 @@ public partial class MainPage : ContentPage
         LoadFoods();
     }
 
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+        LoadFoods();
+    }
+
     private void LoadFoods()
     {
         var foods = FoodCatalogService.GetAll();

@@ -32,12 +32,12 @@ public partial class FoodDetailPage : ContentPage
     {
         NameLabel.Text = item.Name;
         CategoryLabel.Text = item.Category;
-        CaloriesLabel.Text = $"热量：{item.CaloriesLabel}";
-        ProteinLabel.Text = $"蛋白质：{item.Protein} 克";
-        CarbsLabel.Text = $"碳水化合物：{item.Carbs} 克";
-        FatLabel.Text = $"脂肪：{item.Fat} 克";
+        CaloriesLabel.Text = $"Calories: {item.CaloriesLabel}";
+        ProteinLabel.Text = $"Protein: {item.Protein} g";
+        CarbsLabel.Text = $"Carbs: {item.Carbs} g";
+        FatLabel.Text = $"Fat: {item.Fat} g";
         DescriptionLabel.Text = item.Description;
-        AllergyLabel.Text = string.IsNullOrWhiteSpace(item.AllergyNote) ? "无" : item.AllergyNote;
+        AllergyLabel.Text = string.IsNullOrWhiteSpace(item.AllergyNote) ? "None" : item.AllergyNote;
     }
 
     private async void OnSpeakClicked(object? sender, EventArgs e)
@@ -60,7 +60,7 @@ public partial class FoodDetailPage : ContentPage
         }
         catch (FeatureNotSupportedException)
         {
-            DisplayAlertAsync("不支持", "当前设备不支持震动功能。", "OK");
+            DisplayAlertAsync("Not Supported", "Vibration is not available on this device.", "OK");
         }
     }
 

@@ -10,7 +10,7 @@ public partial class AddItemPage : ContentPage
         InitializeComponent();
         CategoryPicker.ItemsSource = new List<string>
         {
-            "主食", "日料", "沙拉", "饮品", "甜品", "小吃", "其他"
+            "Main Course", "Japanese", "Salad", "Beverage", "Dessert", "Snacks", "Other"
         };
         CategoryPicker.SelectedIndex = 0;
     }
@@ -36,37 +36,37 @@ public partial class AddItemPage : ContentPage
         // Validation
         if (string.IsNullOrWhiteSpace(name))
         {
-            ShowValidation("名称不能为空。");
+            ShowValidation("Name cannot be empty.");
             return;
         }
         if (string.IsNullOrWhiteSpace(category))
         {
-            ShowValidation("请选择分类。");
+            ShowValidation("Please select a category.");
             return;
         }
         if (string.IsNullOrWhiteSpace(description))
         {
-            ShowValidation("描述不能为空。");
+            ShowValidation("Description cannot be empty.");
             return;
         }
         if (!double.TryParse(caloriesText, out var calories) || calories < 0)
         {
-            ShowValidation("热量必须是非负数字。");
+            ShowValidation("Calories must be a non-negative number.");
             return;
         }
         if (!double.TryParse(proteinText, out var protein) || protein < 0)
         {
-            ShowValidation("蛋白质必须是非负数字。");
+            ShowValidation("Protein must be a non-negative number.");
             return;
         }
         if (!double.TryParse(carbsText, out var carbs) || carbs < 0)
         {
-            ShowValidation("碳水化合物必须是非负数字。");
+            ShowValidation("Carbs must be a non-negative number.");
             return;
         }
         if (!double.TryParse(fatText, out var fat) || fat < 0)
         {
-            ShowValidation("脂肪必须是非负数字。");
+            ShowValidation("Fat must be a non-negative number.");
             return;
         }
 
@@ -86,7 +86,7 @@ public partial class AddItemPage : ContentPage
         };
 
         FoodCatalogService.Add(item);
-        await DisplayAlertAsync("成功", "食品已添加。", "OK");
+        await DisplayAlertAsync("Success", "Food item has been added.", "OK");
         await Shell.Current.GoToAsync("..");
     }
 
